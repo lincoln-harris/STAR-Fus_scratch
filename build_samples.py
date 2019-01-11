@@ -24,7 +24,7 @@ pd.options.mode.chained_assignment = None  # disable warning message? -- really 
 #////////////////////////////////////////////////////////////////////
 def get_fastqs_R1(path):
 
-	files = os.listdir(path + '/') 
+	files = os.listdir(path) 
 	for f in files:
 		try:
 			if f.endswith('R1_001.fastq.gz'):
@@ -40,11 +40,11 @@ def get_fastqs_R1(path):
 #////////////////////////////////////////////////////////////////////
 def get_fastqs_R2(path):
 
-	files = os.listdir(path + '/') 
+	files = os.listdir(path) 
 	for f in files:
 		try:
 			if f.endswith('R2_001.fastq.gz'):
-				retStr = path + '/' + f
+				retStr = path + '/' + f 
 				return retStr
 		except IndexError:
 			return 'dummy'
@@ -73,7 +73,8 @@ for i in range(0, len(runs_df.index)-1): # want to account for STAR-fus_out pref
 	print(prefix)
 
 	currRun = runs_df['run_name'][i]
-	get_ipython().system('aws s3 cp $prefix ./$currRun --recursive')
+	print('downloading s3 files')
+	get_ipython().system('aws s3 cp $prefix ./$currRun --recursive --quiet')
 
 	cellsList = os.listdir(cwd + '/' + currRun)
 
@@ -81,7 +82,7 @@ for i in range(0, len(runs_df.index)-1): # want to account for STAR-fus_out pref
 	cells_df = pd.DataFrame({'cell_name':cellsList})
 
 	# add a full_path col
-	cells_df['full_path'] = cwd + '/' + currRun + '/' + cells_df['cell_name']
+	cells_df['full_path'] = cwd + '/' + currRun + cells_df['cell_name']
 
 	# add input_fq1/2 cols
 	cells_df['input_fq1'] = cells_df['full_path'].map(get_fastqs_R1) 
@@ -89,11 +90,11 @@ for i in range(0, len(runs_df.index)-1): # want to account for STAR-fus_out pref
 
 	samples_df = cells_df[['cell_name', 'input_fq1', 'input_fq2']]
 
-	outFileName = currRun + '_samples.csv' # why isnt this working? 
+	print(currRun)
+	print('writing samples file')
+	outFileName = 'samples_' + currRun.strip('/') + '.csv'
 	samples_df.to_csv(outFileName, index=False, sep='\t', header=False)
-
-	# clean up 
-	#get_ipython().system('rm *.fastq*')
+	print('	')
 
 #////////////////////////////////////////////////////////////////////
 #////////////////////////////////////////////////////////////////////
