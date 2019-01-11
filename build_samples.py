@@ -89,11 +89,11 @@ for i in range(0, len(runs_df.index)-1): # want to account for STAR-fus_out pref
 
 	samples_df = cells_df[['cell_name', 'input_fq1', 'input_fq2']]
 
-	outFileName = currRun + '_samples.csv'
+	outFileName = currRun + '_samples.csv' # why isnt this working? 
 	samples_df.to_csv(outFileName, index=False, sep='\t', header=False)
 
 	# clean up 
-	get_ipython().system('rm *.fastq*')
+	#get_ipython().system('rm *.fastq*')
 
 #////////////////////////////////////////////////////////////////////
 #////////////////////////////////////////////////////////////////////
