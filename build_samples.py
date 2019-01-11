@@ -6,6 +6,9 @@
 #
 # Building samples.csv, with pandas...would have been better to do 
 # this with jupyter, but not working on VM, for some reason
+#
+# usage:
+#		ipython build_samples.py
 #////////////////////////////////////////////////////////////////////
 #////////////////////////////////////////////////////////////////////
 import os
@@ -42,7 +45,6 @@ def get_fastqs_R2(path):
 		try:
 			if f.endswith('R2_001.fastq.gz'):
 				retStr = path + '/' + f
-				#print(retStr)
 				return retStr
 		except IndexError:
 			return 'dummy'
@@ -54,8 +56,7 @@ def get_fastqs_R2(path):
 
 cwd = os.getcwd()
 
-
-bucketPrefixes = get_ipython().system('aws s3 ls s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/')
+bucketPrefixes = 's3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/'
 f = 'bucketPrefixes.txt'
 get_ipython().system('aws s3 ls $bucketPrefixes > $f')
 
@@ -64,30 +65,32 @@ runs_df = pd.read_table(f, delim_whitespace=True, header=None, names=['is_prefix
 
 # add a full_path col
 runs_df['full_path'] = 's3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/' + runs_df['run_name']
+#print(runs_df)
 
-for i in range(0, len(runs_df.index)):
+for i in range(0, len(runs_df.index)-1): # want to account for STAR-fus_out prefix
 	global prefix
 	prefix = runs_df['full_path'][i]
 	print(prefix)
 
-	get_ipython().system('aws s3 cp $prefix . --recursive')
+	currRun = runs_df['run_name'][i]
+	get_ipython().system('aws s3 cp $prefix ./$currRun --recursive')
 
-	# read cell names into a pandas df
-	cells_df = pd.read_table(txt, delim_whitespace=True, header=None, names=['cell_name'])
+	cellsList = os.listdir(cwd + '/' + currRun)
 
-
-	
-
+	# read cellsList into a pandas df
+	cells_df = pd.DataFrame({'cell_name':cellsList})
 
 	# add a full_path col
-	cells_df['full_path'] = cwd + '/' + '170202/' + cells_df['cell_name']
+	cells_df['full_path'] = cwd + '/' + currRun + '/' + cells_df['cell_name']
 
 	# add input_fq1/2 cols
 	cells_df['input_fq1'] = cells_df['full_path'].map(get_fastqs_R1) 
 	cells_df['input_fq2'] = cells_df['full_path'].map(get_fastqs_R2) 
 
 	samples_df = cells_df[['cell_name', 'input_fq1', 'input_fq2']]
-	samples_df.to_csv('samples.csv', index=False, sep='\t', header=False)
+
+	outFileName = currRun + '_samples.csv'
+	samples_df.to_csv(outFileName, index=False, sep='\t', header=False)
 
 	# clean up 
 	get_ipython().system('rm *.fastq*')
