@@ -102,3 +102,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# fastqs
+*.fastq*
+
+# CTAT lib
+ctat_genome_lib_build_dir
+
