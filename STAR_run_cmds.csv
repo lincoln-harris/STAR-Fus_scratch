@@ -1,0 +1,44 @@
+STAR-Fusion --samples_file samples_170125.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170125_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170129.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170129_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170202.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170202_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170215.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170215_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170504.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170504_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170508.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170508_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_170510.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 170510_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_171120_concat.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 171120_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180226.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180226_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180307.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180307_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180319.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180319_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180320.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180320_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180405.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180405_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180423.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180423_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180516.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180516_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180519.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180519_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180601.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180601_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180604.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180604_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180711.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180711_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_180831.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180831_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file  samples_180911.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 180911_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
+STAR-Fusion --samples_file samples_181120.csv --genome_lib_dir ./ctat_genome_lib_build_dir -O 1801120_out --FusionInspector validate --STAR_use_shared_memory --examine_coding_effect --denovo_reconstruct --CPU 60
+sleep 120
